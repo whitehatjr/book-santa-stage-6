@@ -7,10 +7,9 @@ import {
     KeyboardAvoidingView,
     StyleSheet,
     TouchableOpacity,
-    Alert,
     ScrollView} from 'react-native';
 
-import SantaAnimation from '../components/SantaClaus.js';
+// import SantaAnimation from '../components/SantaClaus.js';
 import db from '../config';
 import firebase from 'firebase';
 
@@ -33,7 +32,7 @@ export default class WelcomeScreen extends Component{
 
   userSignUp = (emailId, password,confirmPassword) =>{
    if(password !== confirmPassword){
-       return Alert.alert("password doesn't match\nCheck your password.")
+       return alert("password doesn't match\nCheck your password.")
    }else{
      firebase.auth().createUserWithEmailAndPassword(emailId, password)
      .then(()=>{
@@ -44,7 +43,7 @@ export default class WelcomeScreen extends Component{
          email_id:this.state.emailId,
          address:this.state.address
        })
-       return  Alert.alert(
+       return  alert(
             'User Added Successfully',
             '',
             [
@@ -56,7 +55,7 @@ export default class WelcomeScreen extends Component{
        // Handle Errors here.
        var errorCode = error.code;
        var errorMessage = error.message;
-       return Alert.alert(errorMessage)
+       return alert(errorMessage)
      });
    }
  }
@@ -69,7 +68,7 @@ userLogin = (emailId, password)=>{
    .catch((error)=> {
      var errorCode = error.code;
      var errorMessage = error.message;
-     return Alert.alert(errorMessage)
+     return alert(errorMessage)
    })
  }
 
@@ -189,7 +188,7 @@ showModal = ()=>{
             this.showModal()
           }
         <View style={{justifyContent:'center', alignItems:'center'}}>
-          <SantaAnimation/>
+          {/* <SantaAnimation/> */}
           <Text style={styles.title}>Book Santa</Text>
         </View>
         <View>
